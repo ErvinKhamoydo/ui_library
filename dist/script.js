@@ -168,6 +168,22 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.hide = function () {
   return this;
 };
 
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.toggleDisplay = function () {
+  for (let i = 0; i < this.length; i++) {
+    if (!this[i].style) {
+      continue;
+    }
+
+    if (this[i].style.display === 'none') {
+      this[i].style.display = '';
+    } else {
+      this[i].style.display = 'none';
+    }
+  }
+
+  return this;
+};
+
 /***/ }),
 
 /***/ "./src/js/main.js":
@@ -181,7 +197,7 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.hide = function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_lib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/lib */ "./src/js/lib/lib.js");
 
-$('div').show();
+$('.active').toggleDisplay();
 
 /***/ })
 
