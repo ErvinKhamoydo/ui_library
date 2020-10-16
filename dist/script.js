@@ -156,6 +156,18 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.show = function () {
   return this;
 };
 
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.hide = function () {
+  for (let i = 0; i < this.length; i++) {
+    if (!this[i].style) {
+      continue;
+    }
+
+    this[i].style.display = 'none';
+  }
+
+  return this;
+};
+
 /***/ }),
 
 /***/ "./src/js/main.js":
