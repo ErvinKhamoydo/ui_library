@@ -1,5 +1,8 @@
 import './lib/lib';
 
-$('button').onEvent('click', function() {
-    $(this).toggleClass('active');  
-});
+$('button').addAttr('type', 'button');
+// $('button').refreshAttr('typeas', 'dasdwwad');
+
+const sad = $('button').getAttr('type');
+
+console.log(sad);
