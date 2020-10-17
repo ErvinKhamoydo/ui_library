@@ -2008,6 +2008,23 @@ _core__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.find = function (selecto
   return this;
 };
 
+_core__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.closest = function (selector) {
+  let counter = 0;
+
+  for (let i = 0; i < this.length; i++) {
+    this[i] = this[i].closest(selector);
+    counter++;
+  }
+
+  const objLength = Object.keys(this).length;
+
+  for (; counter < objLength; counter++) {
+    delete this[counter];
+  }
+
+  return this;
+};
+
 /***/ }),
 
 /***/ "./src/js/lib/modules/attributes.js":
@@ -2241,8 +2258,9 @@ $('button').onEvent('click', function () {
 });
 $('div').click(function () {
   console.log($(this).index());
-});
-console.log($('div').eq(2).find('.some'));
+}); // console.log($('div').eq(2).find('.some'));
+
+console.log($('.some').closest('.findme'));
 
 /***/ })
 
