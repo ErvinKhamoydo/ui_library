@@ -1,3 +1,5 @@
 import './lib/lib';
 
-console.log($('button').html('SOmething'));
+$('button').onEvent('click', function() {
+    $('div').eq(2).toggleClass('active');
+});

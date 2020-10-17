@@ -1951,6 +1951,19 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.html = function (content
   return this;
 };
 
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.eq = function (i) {
+  const swap = this[i];
+  const objLength = Object.keys(this).length;
+
+  for (let i = 0; i < objLength; i++) {
+    delete this[i];
+  }
+
+  this[0] = swap;
+  this.length = 1;
+  return this;
+};
+
 /***/ }),
 
 /***/ "./src/js/lib/modules/attributes.js":
@@ -2179,7 +2192,9 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.click = function (handle
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_lib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/lib */ "./src/js/lib/lib.js");
 
-console.log($('button').html('SOmething'));
+$('button').onEvent('click', function () {
+  $('div').eq(2).toggleClass('active');
+});
 
 /***/ })
 
