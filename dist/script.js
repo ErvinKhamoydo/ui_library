@@ -1936,10 +1936,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../core */ "./src/js/lib/core.js");
+/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
+/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core */ "./src/js/lib/core.js");
 
 
-_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.html = function (content) {
+
+_core__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.html = function (content) {
   for (let i = 0; i < this.length; i++) {
     if (content) {
       this[i].innerHTML = content;
@@ -1951,7 +1954,7 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.html = function (content
   return this;
 };
 
-_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.eq = function (i) {
+_core__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.eq = function (i) {
   const swap = this[i];
   const objLength = Object.keys(this).length;
 
@@ -1962,6 +1965,17 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.eq = function (i) {
   this[0] = swap;
   this.length = 1;
   return this;
+};
+
+_core__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.index = function () {
+  const parent = this[0].parentNode;
+  const childs = [...parent.children];
+
+  const findMyIndex = item => {
+    return item == this[0];
+  };
+
+  return childs.findIndex(findMyIndex);
 };
 
 /***/ }),
@@ -2194,6 +2208,9 @@ __webpack_require__.r(__webpack_exports__);
 
 $('button').onEvent('click', function () {
   $('div').eq(2).toggleClass('active');
+});
+$('div').click(function () {
+  console.log($(this).index());
 });
 
 /***/ })
