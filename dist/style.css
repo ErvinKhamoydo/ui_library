@@ -88,6 +88,12 @@
     display: block;
     width: 100%; }
 
+.text-center {
+  text-align: center; }
+
+.block-center {
+  margin: 0 auto; }
+
 .hidden {
   visibility: hidden; }
 
