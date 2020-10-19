@@ -2292,6 +2292,34 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.fadeOut = function (dura
   return this;
 };
 
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.fadeToggle = function (duration, display, final) {
+  for (let i = 0; i < this.length; i++) {
+    if (window.getComputedStyle(this[i]).display === 'none') {
+      this[i].style.display = display || 'block';
+
+      const _fadeIn = complection => {
+        this[i].style.opacity = complection;
+      };
+
+      const ani = this.animateOverTime(duration, _fadeIn, final);
+      requestAnimationFrame(ani);
+    } else {
+      const _fadeOut = complection => {
+        this[i].style.opacity = 1 - complection;
+
+        if (complection === 1) {
+          this[i].style.display = 'none';
+        }
+      };
+
+      const ani = this.animateOverTime(duration, _fadeOut, final);
+      requestAnimationFrame(ani);
+    }
+  }
+
+  return this;
+};
+
 /***/ }),
 
 /***/ "./src/js/lib/modules/handlers.js":
@@ -2354,17 +2382,26 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.click = function (handle
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_lib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/lib */ "./src/js/lib/lib.js");
-
-$('button').onEvent('click', function () {
-  $('div').eq(2).toggleClass('active');
-});
-$('div').click(function () {
-  console.log($(this).index());
-}); // console.log($('div').eq(2).find('.some'));
+ // $('button').onEvent('click', function() {
+//     $('div').eq(2).toggleClass('active');
+// });
+// $('div').click(function() {
+//     console.log($(this).index());
+// });
+// console.log($('div').eq(2).find('.some'));
 // console.log($('.some').closest('.findme'));
 // console.log($('.findme').siblings());
+// $('.findme').fadeIn(1000);
 
-$('.findme').fadeIn(1000);
+$('#first').click(() => {
+  $('div').eq(1).fadeToggle(800);
+});
+$('[data-count="second"]').click(() => {
+  $('div').eq(2).fadeToggle(800);
+});
+$('button').eq(2).click(() => {
+  $('.w-500').fadeToggle(800);
+});
 
 /***/ })
 
