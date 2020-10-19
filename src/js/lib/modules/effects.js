@@ -59,26 +59,16 @@ $.prototype.fadeOut = function (duration, final) {
 
 $.prototype.fadeToggle = function (duration, display, final) {
     for (let i = 0; i < this.length; i++) {
+        // if (window.getComputedStyle(this[i]).display === 'none') {
+        //     this.fadeIn(duration, display, final);
+        // } else {
+        //     this.fadeOut(duration, final);
+        // }
+        //OR
         if (window.getComputedStyle(this[i]).display === 'none') {
-            this[i].style.display = display || 'block';
-
-            const _fadeIn = (complection) => {
-                this[i].style.opacity = complection;
-            };
-
-            const ani = this.animateOverTime(duration, _fadeIn, final);
-            requestAnimationFrame(ani);
+            $(this[i]).fadeIn(duration, display, final);
         } else {
-            const _fadeOut = (complection) => {
-                this[i].style.opacity = 1 - complection;
-
-                if (complection === 1) {
-                    this[i].style.display = 'none';
-                }
-            };
-
-            const ani = this.animateOverTime(duration, _fadeOut, final);
-            requestAnimationFrame(ani);
+            $(this[i]).fadeOut(duration, final);
         }
     }
 
