@@ -45,15 +45,16 @@ $.prototype.createModal = function ({
 
         // btns = {count: num, settings: [[text, classNames=[], close, cb]]}
         const buttons = [];
+        const {settings} = btns;
         for (let j = 0; j < btns.count; j++) {
             let btn = document.createElement('button');
-            btn.classList.add('btn', ...btns.settings[j][1]);
-            btn.textContent = btns.settings[j][0];
-            if (btns.settings[j][2]) {
+            btn.classList.add('btn', ...settings[j][1]);
+            btn.textContent = settings[j][0];
+            if (settings[j][2]) {
                 btn.setAttribute('data-close', 'true');
             }
-            if (btns.settings[j][3] && typeof (btns.settings[j][3]) === 'function') {
-                btn.addEventListener('click', btns.settings[j][3]);
+            if (settings[j][3] && typeof (settings[j][3]) === 'function') {
+                btn.addEventListener('click', settings[j][3]);
             }
 
             buttons.push(btn);
