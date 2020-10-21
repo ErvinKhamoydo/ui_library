@@ -73,3 +73,6 @@ $('#trigger').click(() => {
         }
     });
 });
+
+//server
+$().get()
